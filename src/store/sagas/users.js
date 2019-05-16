@@ -1,4 +1,5 @@
 import { call, put, select } from 'redux-saga/effects';
+import { toast } from 'react-toastify';
 import api from '../../services/api';
 
 import { Creators as UserActions } from '../ducks/users';
@@ -12,6 +13,9 @@ export function* addUser(action) {
 
     if (isDuplicated) {
       yield put(UserActions.addUserFailure('Usuário duplicado'));
+      toast.warn('Usuário duplicado', {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      });
     } else {
       const userData = {
         id: data.id,
@@ -22,9 +26,15 @@ export function* addUser(action) {
       };
 
       yield put(UserActions.addUserSuccess(userData));
+      toast.success('Usuário adicionado com sucesso', {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      });
     }
   } catch (error) {
     yield put(UserActions.addUserFailure('Erro ao adicionar usuário'));
+    toast.error('Erro ao adicionar usuário', {
+      position: toast.POSITION.BOTTOM_RIGHT,
+    });
   } finally {
     yield put(ModalActions.hideModal());
   }

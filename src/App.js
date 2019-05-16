@@ -1,4 +1,7 @@
+import dotenv from 'dotenv';
 import React, { Fragment } from 'react';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './config/ReactotronConfig';
 
 import { Provider } from 'react-redux';
@@ -9,10 +12,13 @@ import Routes from './routes';
 import 'font-awesome/css/font-awesome.css';
 import './styles.css';
 
+dotenv.config();
+
 const App = () => (
   <Provider store={store}>
     <Fragment>
       <Routes />
+      <ToastContainer autoClose={3000} />
     </Fragment>
   </Provider>
 );

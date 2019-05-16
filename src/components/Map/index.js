@@ -54,7 +54,7 @@ class Map extends Component {
         {...viewportState}
         onClick={this.handleMapClick}
         mapStyle="mapbox://styles/mapbox/basic-v9"
-        mapboxApiAccessToken="pk.eyJ1IjoiY2Fpb3JvZHJpZ3VlcyIsImEiOiJjanZwbG95MGEyYWV2NDBvaXU4OW9oZzdiIn0.7pm-bY8E2TWzE5aU7gYRJg"
+        mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_ACCESS_TOKEN}
         onViewportChange={viewport => this.setState({ viewport })}
       >
         {users.data.map(user => (

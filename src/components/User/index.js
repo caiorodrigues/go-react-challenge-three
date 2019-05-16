@@ -74,9 +74,9 @@ class User extends Component {
         overlayClassName="modal-overlay"
       >
         <h2>Adicionar novo usuário</h2>
-        <form className="form" onSubmit={this.handleForSubmit}>
+        <form onSubmit={this.handleFormSubmit} className="form">
           <input
-            placeholder="Usuário do GitHub"
+            placeholder="Usuário do Github"
             value={userInput}
             onChange={this.handleInputChange}
           />
@@ -99,13 +99,7 @@ const mapStateToProps = state => ({
   loading: state.users.loading,
 });
 
-const mapDispatchToProps = dispatch => bindActionCreators(
-  {
-    ...ModalActions,
-    ...UserActions,
-  },
-  dispatch,
-);
+const mapDispatchToProps = dispatch => bindActionCreators({ ...ModalActions, ...UserActions }, dispatch);
 
 export default connect(
   mapStateToProps,

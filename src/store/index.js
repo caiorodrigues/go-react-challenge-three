@@ -17,6 +17,6 @@ const composer = process.env.NODE_ENV === 'development'
 
 const store = createStore(reducers, composer);
 
-sagaMiddleware(sagas);
+sagaMiddleware.run(sagas);
 
 export default store;
